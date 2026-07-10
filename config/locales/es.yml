@@ -7,6 +7,9 @@ es:
       error: "Email o contraseña incorrectos."
       remember_me: "Recuérdame"
 
+      passwords:
+        new:
+          title: "Recuperar contraseña"
     auth/account:
       titles:
         edit: "Mi Cuenta"
