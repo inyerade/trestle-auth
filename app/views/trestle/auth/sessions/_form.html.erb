@@ -27,7 +27,11 @@
   <%= f.submit t("admin.auth.login", default: "Login"), class: "btn btn-primary btn-lg d-block w-100" %>
 </div>
 
-<% if Trestle.config.auth.recover.enabled %>
+<% if Trestle.config.auth.backend == :devise && Trestle.config.auth.user_class.call.respond_to?(:devise_modules) && Trestle.config.auth.user_class.call.devise_modules.include?(:recoverable) %>
+  <div class="form-group text-center">
+    <%= link_to t("admin.auth.passwords.new.title", default: "Forgot Password?"), main_app.send("new_#{Trestle.config.auth.warden.scope}_password_path") %>
+  </div>
+<% elsif Trestle.config.auth.recover.enabled %>
   <div class="form-group text-center">
     <%= link_to t("admin.auth.passwords.new.title", default: "Forgot Password?"), trestle.new_password_path %>
   </div>
