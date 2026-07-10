@@ -1,0 +1,22 @@
+<%= form_tag trestle.password_path(@user.password_reset_token), method: :patch, class: "login-form" do %>
+  <header class="auth-header">
+    <h1><%= t("admin.auth.passwords.edit.title", default: "Change Password") %></h1>
+  </header>
+
+  <% if flash[:error] -%>
+    <div class="alert alert-danger error-bg">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end -%>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-lock fa-fw"></i></span>
+      <%= password_field_tag :password, nil, placeholder: t("admin.auth.passwords.edit.password", default: "New Password"), class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag t("admin.auth.passwords.edit.submit", default: "Change Password"), class: "btn btn-primary btn-lg d-block w-100" %>
+  </div>
+<% end %>

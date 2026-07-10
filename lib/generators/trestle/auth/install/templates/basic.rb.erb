@@ -119,3 +119,23 @@ config.auth.user_class = -> { <%= model %> }
 # config.auth.remember.cookie = ->(user) {
 #   { value: user.remember_token, expires: user.remember_token_expires_at }
 # }
+
+# Enable or disable password recovery functionality. Defaults to false.
+#
+# config.auth.recover.enabled = false
+
+# Specify password recovery token expiration time. Defaults to 1 day.
+#
+# config.auth.recover.for = 1.day
+
+# Enable or disable any_login integration. Defaults to false.
+#
+# config.auth.any_login.enabled = false
+
+# Show any_login on the login page. Defaults to true.
+#
+# config.auth.any_login.show_on_login_page = true
+
+# Show any_login on the main admin layout. Defaults to true.
+#
+# config.auth.any_login.show_on_admin_layout = true

@@ -9,4 +9,10 @@ Trestle::Engine.routes.draw do
       get 'logout' => :destroy, as: :logout
     end
   end
+
+  if Trestle.config.auth.recover.enabled
+    scope module: "trestle/auth" do
+      resources :passwords, only: [:new, :create, :edit, :update]
+    end
+  end
 end

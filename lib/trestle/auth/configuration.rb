@@ -3,6 +3,8 @@ module Trestle
     class Configuration
       require_relative "configuration/rememberable"
       require_relative "configuration/warden"
+      require_relative "configuration/recoverable"
+      require_relative "configuration/any_login"
 
       include Configurable
 
@@ -66,6 +68,8 @@ module Trestle
       option :logo
 
       option :remember, Rememberable.new
+      option :recover, Recoverable.new
+      option :any_login, AnyLogin.new
 
       option :backend, Backends::Basic
 

@@ -10,12 +10,12 @@ describe Trestle::Auth::Generators::ModelGenerator, type: :generator do
   end
 
   it "generates an ActiveRecord model with the default name" do
-    expect(generator).to receive(:generate).with("model", "Administrator", "email:string password_digest:string first_name:string last_name:string remember_token:string remember_token_expires_at:datetime") { stub_model_file }
+    expect(generator).to receive(:generate).with("model", "Administrator", "email:string password_digest:string first_name:string last_name:string remember_token:string remember_token_expires_at:datetime password_reset_token:string password_reset_sent_at:datetime") { stub_model_file }
     run_generator
   end
 
   it "generates an ActiveRecord model with the specified name" do
-    expect(generator(%w(TrestleAdmin))).to receive(:generate).with("model", "TrestleAdmin", "email:string password_digest:string first_name:string last_name:string remember_token:string remember_token_expires_at:datetime") { stub_model_file("TrestleAdmin") }
+    expect(generator(%w(TrestleAdmin))).to receive(:generate).with("model", "TrestleAdmin", "email:string password_digest:string first_name:string last_name:string remember_token:string remember_token_expires_at:datetime password_reset_token:string password_reset_sent_at:datetime") { stub_model_file("TrestleAdmin") }
     run_generator %w(TrestleAdmin)
   end
 
@@ -32,6 +32,7 @@ describe Trestle::Auth::Generators::ModelGenerator, type: :generator do
       it { is_expected.to have_correct_syntax }
       it { is_expected.to contain "include Trestle::Auth::ModelMethods" }
       it { is_expected.to contain "include Trestle::Auth::ModelMethods::Rememberable" }
+      it { is_expected.to contain "include Trestle::Auth::ModelMethods::Recoverable" }
     end
   end
 end

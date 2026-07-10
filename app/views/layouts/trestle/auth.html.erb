@@ -32,5 +32,9 @@
     <main class="container">
       <%= yield %>
     </main>
+
+    <% if Trestle.config.auth.any_login.enabled && Trestle.config.auth.any_login.show_on_login_page %>
+      <%= any_login_here if defined?(AnyLogin) %>
+    <% end %>
   </body>
 </html>

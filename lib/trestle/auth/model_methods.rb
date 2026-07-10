@@ -4,6 +4,7 @@ module Trestle
       extend ActiveSupport::Concern
 
       require_relative "model_methods/rememberable"
+      require_relative "model_methods/recoverable"
 
       included do
         has_secure_password

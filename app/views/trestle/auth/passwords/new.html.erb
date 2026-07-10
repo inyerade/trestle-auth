@@ -1,0 +1,32 @@
+<%= form_tag trestle.passwords_path, class: "login-form" do %>
+  <header class="auth-header">
+    <h1><%= t("admin.auth.passwords.new.title", default: "Reset Password") %></h1>
+  </header>
+
+  <% if flash[:error] -%>
+    <div class="alert alert-danger error-bg">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end -%>
+  
+  <% if flash[:message] -%>
+    <div class="alert alert-success">
+      <p><%= flash[:message] %></p>
+    </div>
+  <% end -%>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span>
+      <%= text_field_tag Trestle.config.auth.authenticate_with, params[Trestle.config.auth.authenticate_with], placeholder: Trestle.config.auth.human_attribute_name(Trestle.config.auth.authenticate_with), class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag t("admin.auth.passwords.new.submit", default: "Send Reset Link"), class: "btn btn-primary btn-lg d-block w-100" %>
+  </div>
+  
+  <div class="form-group text-center">
+    <%= link_to t("admin.auth.passwords.new.back", default: "Back to Login"), trestle.login_path %>
+  </div>
+<% end %>
